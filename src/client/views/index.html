@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Sentiment Analyzer</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <main>
+    <div class="container">
+      <h1 class="header">Enter a URL of an article / a blog to discover its sentiment.</h1>
+      <section>
+        <form id="form" method="post" action="/test" onsubmit="return handleSubmit(event)">
+          <label for="article-url">URL</label>
+          <input id="article-url" type="text" name="input" value="" placeholder="Enter Article URL here" autoFocus />
+          <button type="submit" class="btn-submit" onclick="return Client.handleSubmit(event)"
+            onsubmit="return handleSubmit(event)">
+            Submit
+          </button>
+        </form>
+      </section>
+
+      <section>
+        <strong>Form Results:</strong>
+        <hr />
+        <div class="flex">
+          <div id="text"></div>
+          <span id="wait"></span>
+        </div>
+        <div id="agreement"></div>
+        <div id="subjectivity"></div>
+        <div id="confidence"></div>
+        <div id="irony"></div>
+        <div id="score_tag"></div>
+
+      </section>
+
+
+      <footer>
+        <p>
+          Made with ❤️️ and javascript
+        </p>
+      </footer>
+    </div>
+  </main>
+  <script>
+    // Check that service workers are supported
+    if ('serviceWorker' in navigator) {
+      // Use the window load event to keep the page load performant
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+      })
+    }
+  </script>
+</body>
+
+</html>
